@@ -1,6 +1,4 @@
-*.class
 *.xml
-*.properties
 *.mf
 /**/**/nbproject/
 /**/**/build/
