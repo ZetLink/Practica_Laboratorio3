@@ -63,7 +63,8 @@ public class Libro implements Comparable<Libro>{
     }
     
     private String validarAutor() throws LibroException{
-        String sTemp = Consola.readString("Autor: ");
+        System.out.print("Autor: ");
+        String sTemp = Consola.readLine();
         if(sTemp.trim().equals("")){
             throw new DatoVacioException();
         }

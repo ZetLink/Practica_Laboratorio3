@@ -2,7 +2,6 @@ package principal;
 
 import datos.Libro;
 import exceptions.DatoVacioException;
-import exceptions.FechaInvalidaException;
 import lista.LSEO;
 import lista.Nodo;
 import utilidades.Consola;
@@ -26,7 +25,6 @@ public class Principal {
                     tituloValido = true; 
                 } catch (LibroException e) {
                     System.err.println("Error: " + e.getMessage());
-                    System.out.println("Ingrese nuevamente el titulo del libro...");
                 }
             }
             Libro lTemp = new Libro(titulo);
@@ -38,9 +36,13 @@ public class Principal {
     private String validarCadena() throws LibroException {
         String sTemp = "";
         do{
-            sTemp = Consola.obtenerVariosNombresFormateado(Consola.readString("Titulo: ")).replace(" ", "");
+            System.out.print("Titulo: ");
+            sTemp = Consola.readLine();
+            if(!sTemp.equals("")){
+                sTemp = Consola.obtenerVariosNombresFormateado(sTemp).replace(" ", "");
+            }
         }while(libros.buscar(new Libro(sTemp)));
-        if(sTemp.trim().equals("")){
+        if(sTemp.equals("")){
             throw new DatoVacioException();
         }
         return sTemp;
