@@ -70,12 +70,10 @@ public class Principal {
     }
     
     private boolean validarListaVacia() throws NotaException{
-        boolean b = false;
         if(notas.listaVacia()){
-            b = true;
             throw new ListaVaciaException();
         }
-        return b;
+        return false;
     }
     
     public void menu() throws NotaException{
